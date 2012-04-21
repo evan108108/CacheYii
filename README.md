@@ -16,11 +16,17 @@ CacheYii
 >4. Add this behavor to any model you intend to use as a cache dependency 
 >```php
  function behaviors() {
+ 
   'updateCacheMapBehavior' => array(
+  
     'class'=>'ext.CacheYii.EUpdateCacheMapBehavior',
+    
     'cacheExp'=>3600,
+    
     'modelName'=>__CLASS__,
+    
   ),
+  
 }
 ```
 
@@ -35,5 +41,7 @@ if($model===false)
 ```
 
 ###Documentation
->EDCache::getCache(YOUR_UNIQUE_ID, ARRAY_OF_MODEL_DEPENDENCIES)
->EDCache::setCache(YOUR_UNIQUE_ID, DATA_TO_BE_CACHED, CACHE_EXPIRATION_IN_SECONDS);
+```php
+EDCache::getCache(YOUR_UNIQUE_ID, ARRAY_OF_MODEL_DEPENDENCIES);
+EDCache::setCache(YOUR_UNIQUE_ID, DATA_TO_BE_CACHED, CACHE_EXPIRATION_IN_SECONDS);
+```
