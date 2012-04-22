@@ -8,15 +8,12 @@ class EUpdateCacheMapBehavior extends CActiveRecordBehavior
   {
     $cacheMap = Yii::app()->cache->get('modelUpdateMap');
     if($cacheMap === false)
-    {
-      $cacheMap = array($this->modelName=>time());
-    }
-    else 
-    {
-      $cacheMap[$modelName] = time();
-      Yii::app()->cache->set("$id", $cacheMap, $this->cacheExp);
-    }
+      $cacheMap = array();
 
+    $cacheMap[$this->modelName] = time();
+    
+    Yii::app()->cache->set('modelUpdateMap', $cacheMap, $this->cacheExp);
+    
     return parent::afterSave($event);
   }
 }
