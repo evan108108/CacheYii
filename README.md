@@ -14,7 +14,8 @@ CacheYii
 ),
 ```
 >4. Add this behavor to any model you intend to use as a cache dependency 
-``` php
+
+```
  function behaviors() {
     'updateCacheMapBehavior' => array(
         'class'=>'ext.CacheYii.EUpdateCacheMapBehavior',
@@ -25,7 +26,7 @@ CacheYii
 ```
 
 ###Usage
->``` php
+>```
 $model = EDCache::getCache("YOUR_UNIQUE_ID_HERE", array("Post", "Comments"));
 if($model===false)
 {
