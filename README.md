@@ -20,7 +20,7 @@ CacheYii
  function behaviors() {
     'updateCacheMapBehavior' => array(
         'class'=>'ext.CacheYii.EUpdateCacheMapBehavior',
-        'cacheExp'=>3600,
+        'cacheExp'=>0, //This is optional and the default is 0 (0 means never expire)
         'modelName'=>__CLASS__,
     ),
 }
