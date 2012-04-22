@@ -23,6 +23,7 @@ CacheYii
         'class'=>'ext.CacheYii.EUpdateCacheMapBehavior',
         'cacheExp'=>0, //This is optional and the default is 0 (0 means never expire)
         'modelName'=>__CLASS__,
+        'modelUpdateMap'=>Yii::app()->cache->get('modelUpdateMap'),
     ),
 }
 ```
@@ -35,6 +36,10 @@ if($model===false)
    $model = Post::model()->with('comments')->findAll();
    EDCache::setCache("YOUR_UNIQUE_ID_HERE", $model, 3600);
 }
+```
+
+>```
+EDCache::deleteCache("YOUR_UNIQUE_ID_HERE");
 ```
 
 ###Documentation

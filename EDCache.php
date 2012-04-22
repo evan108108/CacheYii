@@ -17,7 +17,7 @@
       foreach($dependencies as $dependency)
       {
         if(isset($modelUpdateMap[$dependency]) && $modelUpdateMap[$dependency] > $cacheCrtDtm)
-          return false;
+          return EDCache::deleteCache($id);
       }
 
       $cacheResult = Yii::app()->cache->get($id);
@@ -32,5 +32,12 @@
       Yii::app()->cache->set("$id", $dataToCache, $exp);
       Yii::app()->cache->set($id . "_crtdtm", time(), $exp);
       return true;
+    }
+
+    public static function deleteCache($id)
+    {
+      Yii::app()->cache->delete($id . "_crtdtm");
+      Yii::app()->cache->delete($id);
+      return false;
     }
   }
