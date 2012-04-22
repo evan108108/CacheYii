@@ -1,7 +1,7 @@
 <?php
 class EUpdateCacheMapBehavior extends CActiveRecordBehavior
 {
-  public $cacheExp = 3600;
+  public $cacheExp = 0;
   public $modelName;
 
   public function afterSave($event)
