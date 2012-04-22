@@ -7,7 +7,7 @@ CacheYii
 >1. git clone git@github.com:evan108108/CacheYii.git
 >2. Place CacheYii in your 'protected/extensions' directory
 >3. In your protected/config/main.php
-``` php
+>```
 'import'=>array(
     ...
     'ext.CacheYii.*',
@@ -15,7 +15,7 @@ CacheYii
 ```
 >4. Add this behavor to any model you intend to use as a cache dependency 
 
-```
+>```
  function behaviors() {
     'updateCacheMapBehavior' => array(
         'class'=>'ext.CacheYii.EUpdateCacheMapBehavior',
