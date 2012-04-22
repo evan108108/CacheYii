@@ -1,7 +1,8 @@
 CacheYii
 ========
 
-##Helps invalidate cache on Model dependent results
+##Yii Extension that helps invalidate cache on Model dependent results
+>####Will invalidate cache when any of the Models you have specified has been update since the cache was created
 
 ###Installation
 >1. git clone git@github.com:evan108108/CacheYii.git
