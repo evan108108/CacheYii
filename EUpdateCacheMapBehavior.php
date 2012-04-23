@@ -9,13 +9,23 @@ class EUpdateCacheMapBehavior extends CActiveRecordBehavior
 
   public function afterSave($event)
   {
+    $this->updateModelUpdateMap();
+    return parent::afterSave($event);
+  }
+
+  public function afterDelete($event)
+  {
+    $this->updateModelUpdateMap();
+    return parent::afterDelete($event);
+  }
+
+  private function updateModelUpdateMap()
+  {
     if($this->modelUpdateMap === false)
       $this->modelUpdateMap = array();
 
     $this->modelUpdateMap = CMap::mergeArray($this->modelUpdateMap, array($this->modelName=>time()));
     
     Yii::app()->cache->set(self::CACHE_MAP_NAME, $this->modelUpdateMap, $this->cacheExp);
-    
-    return parent::afterSave($event);
   }
 }
