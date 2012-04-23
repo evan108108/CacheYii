@@ -30,20 +30,20 @@ CacheYii
 
 ###Usage
 >```
-$model = EDCache::getCache("YOUR_UNIQUE_ID_HERE", array("Post", "Comments"));
+$model = EDCache::get("YOUR_UNIQUE_ID_HERE", array("Post", "Comments"));
 if($model===false)
 {
    $model = Post::model()->with('comments')->findAll();
-   EDCache::setCache("YOUR_UNIQUE_ID_HERE", $model, 3600);
+   EDCache::set("YOUR_UNIQUE_ID_HERE", $model, 3600);
 }
 ```
 
 >```
-EDCache::deleteCache("YOUR_UNIQUE_ID_HERE");
+EDCache::delete("YOUR_UNIQUE_ID_HERE");
 ```
 
 ###Documentation
 ``` php
-EDCache::getCache(YOUR_UNIQUE_ID, ARRAY_OF_MODEL_DEPENDENCIES);
-EDCache::setCache(YOUR_UNIQUE_ID, DATA_TO_BE_CACHED, CACHE_EXPIRATION_IN_SECONDS);
+EDCache::get(YOUR_UNIQUE_ID, ARRAY_OF_MODEL_DEPENDENCIES);
+EDCache::set(YOUR_UNIQUE_ID, DATA_TO_BE_CACHED, CACHE_EXPIRATION_IN_SECONDS);
 ```

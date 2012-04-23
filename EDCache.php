@@ -1,7 +1,7 @@
 <?php
   class EDCache extends CApplicationComponent
   {
-    public static function getCache($id, $dependencies=array())
+    public static function get($id, $dependencies=array())
     {
       if(!is_array($dependencies))
         $dependencies = array($dependencies);
@@ -17,7 +17,10 @@
       foreach($dependencies as $dependency)
       {
         if(isset($modelUpdateMap[$dependency]) && $modelUpdateMap[$dependency] > $cacheCrtDtm)
-          return EDCache::deleteCache($id);
+        {
+          EDCache::delete($id);
+          return false;
+        }
       }
 
       $cacheResult = Yii::app()->cache->get($id);
@@ -27,17 +30,17 @@
       return $cacheResult;
     }
 
-    public static function setCache($id, $dataToCache, $exp)
+    public static function set($id, $dataToCache, $exp)
     {
       Yii::app()->cache->set("$id", $dataToCache, $exp);
       Yii::app()->cache->set($id . "_crtdtm", time(), $exp);
       return true;
     }
 
-    public static function deleteCache($id)
+    public static function delete($id)
     {
       Yii::app()->cache->delete($id . "_crtdtm");
       Yii::app()->cache->delete($id);
-      return false;
+      return true;
     }
   }
