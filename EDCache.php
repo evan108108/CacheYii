@@ -3,8 +3,7 @@
   {
     public static function get($id, $dependencies=array())
     {
-      if(!is_array($dependencies))
-        $dependencies = array($dependencies);
+      if(!is_array($dependencies)) $dependencies = array($dependencies);
 
       $modelUpdateMap = Yii::app()->cache->get('modelUpdateMap');
       if($modelUpdateMap === false) $modelUpdateMap = array();
