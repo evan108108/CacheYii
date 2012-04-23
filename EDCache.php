@@ -7,12 +7,10 @@
         $dependencies = array($dependencies);
 
       $modelUpdateMap = Yii::app()->cache->get('modelUpdateMap');
-      if($modelUpdateMap === false)
-        $modelUpdateMap = array();
+      if($modelUpdateMap === false) $modelUpdateMap = array();
 
       $cacheCrtDtm = Yii::app()->cache->get($id . "_crtdtm");
-      if($cacheCrtDtm === false)
-        return false;
+      if($cacheCrtDtm === false) return false;
 
       foreach($dependencies as $dependency)
       {
@@ -24,8 +22,7 @@
       }
 
       $cacheResult = Yii::app()->cache->get($id);
-      if($cacheResult === false)
-        return false;
+      if($cacheResult === false) return false;
 
       return $cacheResult;
     }
