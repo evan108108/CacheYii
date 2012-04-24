@@ -23,7 +23,6 @@ CacheYii
         'class'=>'ext.CacheYii.EUpdateCacheMapBehavior',
         'cacheExp'=>0, //This is optional and the default is 0 (0 means never expire)
         'modelName'=>__CLASS__,
-        'modelUpdateMap'=>Yii::app()->cache->get('modelUpdateMap'),
     ),
 }
 ```

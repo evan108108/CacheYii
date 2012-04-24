@@ -21,8 +21,9 @@ class EUpdateCacheMapBehavior extends CActiveRecordBehavior
 
   private function updateModelUpdateMap()
   {
-    if($this->modelUpdateMap === false)
-      $this->modelUpdateMap = array();
+    $this->modelUpdateMap = Yii::app()->cache->get(self::CACHE_MAP_NAME);
+
+    if($this->modelUpdateMap === false) $this->modelUpdateMap = array();
 
     $this->modelUpdateMap = CMap::mergeArray($this->modelUpdateMap, array($this->modelName=>time()));
     
