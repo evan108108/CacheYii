@@ -22,7 +22,7 @@ CacheYii
     'updateCacheMapBehavior' => array(
         'class'=>'ext.CacheYii.EUpdateCacheMapBehavior',
         'cacheExp'=>0, //This is optional and the default is 0 (0 means never expire)
-        'modelName'=>__CLASS__,
+        'modelName'=>__CLASS__, //This is optional as it will assume current model
     ),
 }
 ```

@@ -3,25 +3,26 @@
   {
     public static function get($id, $dependencies=array())
     {
-      if(!is_array($dependencies)) $dependencies = array($dependencies);
+      if(!is_array($dependencies))
+        $dependencies = array($dependencies);
 
       $modelUpdateMap = Yii::app()->cache->get('modelUpdateMap');
-      if($modelUpdateMap === false) $modelUpdateMap = array();
+      if($modelUpdateMap === false)
+        $modelUpdateMap = array();
 
       $cacheCrtDtm = Yii::app()->cache->get($id . "_crtdtm");
-      if($cacheCrtDtm === false) return false;
+      if($cacheCrtDtm === false)
+        return false;
 
       foreach($dependencies as $dependency)
       {
-        if(isset($modelUpdateMap[$dependency]) && $modelUpdateMap[$dependency] > $cacheCrtDtm)
-        {
-          EDCache::delete($id);
-          return false;
-        }
+        if(isset($modelUpdateMap[$dependency]) && $modelUpdateMap[$dependency] >= $cacheCrtDtm)
+          return EDCache::delete($id);
       }
 
       $cacheResult = Yii::app()->cache->get($id);
-      if($cacheResult === false) return false;
+      if($cacheResult === false)
+        return false;
 
       return $cacheResult;
     }
@@ -37,6 +38,6 @@
     {
       Yii::app()->cache->delete($id . "_crtdtm");
       Yii::app()->cache->delete($id);
-      return true;
+      return false;
     }
   }
