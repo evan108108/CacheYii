@@ -9,7 +9,7 @@ CacheYii
 >2. Place CacheYii in your 'protected/extensions' directory
 >3. In your protected/config/main.php
 
->```
+>```php
 'import'=>array(
     ...
     'ext.CacheYii.*',
@@ -17,7 +17,7 @@ CacheYii
 ```
 >4. Add this behavor to any model you intend to use as a cache dependency 
 
->```
+>```php
  function behaviors() {
     'updateCacheMapBehavior' => array(
         'class'=>'ext.CacheYii.EUpdateCacheMapBehavior',
@@ -28,7 +28,7 @@ CacheYii
 ```
 
 ###Usage
->```
+>```php
 $model = EDCache::get("YOUR_UNIQUE_ID_HERE", array("Post", "Comments"));
 if($model===false)
 {
@@ -37,7 +37,7 @@ if($model===false)
 }
 ```
 
->```
+>```php
 EDCache::delete("YOUR_UNIQUE_ID_HERE");
 ```
 
