@@ -47,7 +47,7 @@
 			if($cacheResult===false)
 			{
 				 $cacheResult = $cacheFunction();
-				 EDCache::set($cacheResult, $dependencies, $exp);
+				 EDCache::set($id, $cacheResult, $exp);
 			}
 			return $cacheResult;
 		}
