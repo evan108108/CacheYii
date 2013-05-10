@@ -39,7 +39,7 @@ if($model===false)
 
 #####Get And Set (GAS)
 >```php
-EDCache::gas("YOUR_UNIQUE_ID_HERE", array("Post", "Comments"), 3600, function() use ($model) {
+$models = EDCache::gas("YOUR_UNIQUE_ID_HERE", array("Post", "Comments"), 3600, function() use ($model) {
 	return $model->findAll();
 });
 ```
