@@ -39,5 +39,18 @@
       Yii::app()->cache->delete($id . "_crtdtm");
       Yii::app()->cache->delete($id);
       return false;
-    }
-  }
+		}
+
+		public static function gas($id, $dependencies=array(), $exp=0, Callable $cacheFunction)
+		{
+			$cacheResult = EDCache::get($id, $dependencies);
+			if($cacheResult===false)
+			{
+				 $cacheResult = $cacheFunction();
+				 EDCache::set($id, $cacheResult, $exp);
+			}
+			return $cacheResult;
+		}
+	}
+
+
